@@ -11,7 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,7 +28,7 @@ public class Category implements Serializable{
 	private String name;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "products_id")
+	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
 	 
 	 
