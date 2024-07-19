@@ -18,6 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.studies.springbootcourse.entities.User;
 import com.studies.springbootcourse.services.UserService;
 
+import jakarta.transaction.Transactional;
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
@@ -47,10 +49,12 @@ public class UserResource {
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
+
 	@DeleteMapping(value ="/id-{id}")
 	public ResponseEntity<Void> delete (@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+
 	}
 	
 	@PutMapping(value = "/id-{id}")
